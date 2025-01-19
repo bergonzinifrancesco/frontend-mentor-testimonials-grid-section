@@ -1,0 +1,221 @@
+
+/* Box sizing rules */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+/* Prevent font size inflation */
+html {
+  -moz-text-size-adjust: none;
+  -webkit-text-size-adjust: none;
+  text-size-adjust: none;
+}
+
+/* Remove default margin in favour of better control in authored CSS */
+body, h1, h2, h3, h4, p,
+figure, blockquote, dl, dd {
+  margin-block-end: 0;
+}
+
+/* Remove list styles on ul, ol elements with a list role, which suggests default styling will be removed */
+ul[role='list'],
+ol[role='list'] {
+  list-style: none;
+}
+
+/* Set core body defaults */
+body {
+  min-height: 100vh;
+  line-height: 1.5;
+}
+
+/* Set shorter line heights on headings and interactive elements */
+h1, h2, h3, h4,
+button, input, label {
+  line-height: 1.1;
+}
+
+/* Balance text wrapping on headings */
+h1, h2,
+h3, h4 {
+  text-wrap: balance;
+}
+
+/* A elements that don't have a class get default styles */
+a:not([class]) {
+  text-decoration-skip-ink: auto;
+  color: currentColor;
+}
+
+/* Make images easier to work with */
+img,
+picture {
+  max-width: 100%;
+  display: block;
+}
+
+/* Inherit fonts for inputs and buttons */
+input, button,
+textarea, select {
+  font-family: inherit;
+  font-size: inherit;
+}
+
+/* Make sure textareas without a rows attribute are not tiny */
+textarea:not([rows]) {
+  min-height: 10em;
+}
+
+/* Anything that has been anchored to should have extra scroll margin */
+:target {
+  scroll-margin-block: 5ex;
+}
+
+
+/* global css */
+:root {
+  --color-moderate-violet: hsl(263, 55%, 52%);
+  --color-very-dark-grayish-blue: hsl(219, 29%, 14%);
+  --color-light-gray: hsl(0, 0%, 81%);
+  --color-light-grayish-blue: hsl(210, 46%, 95%);
+  --font-weight-medium: 500;
+  --font-weight-semibold: 600;
+  --grid-template-rows: 5;
+  --grid-template-columns: 1;
+  --grid-flow: row;
+  /* @link https://utopia.fyi/type/calculator?c=375,11,1.2,1440,20,1.25,5,2,&s=0.75|0.5|0.25,1.5|2|3|4|6,s-l&g=s,l,xl,12 */
+  --step--2: clamp(0.4774rem, 0.3638rem + 0.4846vw, 0.8rem);
+  /* Step -1: 9.1667px → 16px */
+  --step--1: clamp(0.5729rem, 0.4225rem + 0.6416vw, 1rem);
+  /* Step 0: 11px → 20px */
+  --step-0: clamp(0.6875rem, 0.4894rem + 0.8451vw, 1.25rem);
+  /* Step 1: 13.2px → 25px */
+  --step-1: clamp(0.825rem, 0.5653rem + 1.108vw, 1.5625rem);
+  /* Step 2: 15.84px → 31.25px */
+  --step-2: clamp(0.99rem, 0.6509rem + 1.4469vw, 1.9531rem);
+  /* Step 3: 19.008px → 39.0625px */
+  --step-3: clamp(1.188rem, 0.7467rem + 1.8831vw, 2.4414rem);
+  /* Step 4: 22.8096px → 48.8281px */
+  --step-4: clamp(1.4256rem, 0.853rem + 2.4431vw, 3.0518rem);
+  /* Step 5: 27.3715px → 61.0352px */
+  --step-5: clamp(1.7107rem, 0.9699rem + 3.1609vw, 3.8147rem);
+}
+
+body {
+  font-family: "Barlow Semi Condensed", serif;
+  font-size: var(--step-0);
+  line-height: 1.5;
+  min-height: 100vh;
+  background-color: var(--color-light-grayish-blue);
+}
+h1 {
+  font-size: var(--step-5);
+  line-height: 1.1;
+}
+h2 {
+  font-size: var(--step-4);
+  line-height: 1.3;
+}
+h3 {
+  font-size: var(--step-3);
+  line-height: 1.4;
+}
+main {
+  display: grid;
+  grid-template-rows: var(--grid-template-rows);
+  grid-template-columns: var(--grid-template-columns);
+  grid-auto-flow: var(--grid-flow);
+  justify-content: center;
+  justify-items: center;
+}
+footer {
+  position: relative;
+  margin: auto;
+  align-self: end;
+  width: fit-content;
+  font-size: var(--step--2);
+  color: var(--color-light-gray);
+  > a {
+    color: color-mix(in hsl, currentcolor, black 20%);
+  }
+}
+p, blockquote {
+  margin: 0;
+}
+
+/* utilities */
+.gap-6 {
+  gap: 20px;
+}
+.p-6 {
+  padding: 20px;
+}
+.p-8 {
+  padding: 30px;
+}
+.font-semibold {
+  font-weight: var(--font-weight-semibold);
+}
+.text-sm {
+  font-size: var(--step--1);
+}
+.text-lg {
+  font-size: var(--step-3);
+}
+.leading-tight {
+  line-height: 1.1;
+}
+.color-primary {
+  color: var(--color-primary);
+}
+.color-secondary {
+  color: var(--color-secondary);
+}
+.secondary-opacity-50 {
+  color: hsl(from var(--color-secondary) h s calc(l + 25));
+}
+.secondary-opacity-70 {
+  color: hsl(from var(--color-secondary) h s calc(l + 20));
+}
+.background-quotation {
+  background-image: url("./images/bg-pattern-quotation.svg");
+  background-repeat: no-repeat;
+  background-position-x: 90%;
+}
+
+/* blocks */
+.card {
+  display: flex;
+  flex-direction: column;
+  background-color: var(--color-moderate-violet);
+  border-radius: 10px;
+  padding: 20px;
+}
+.banner {
+  display: flex;
+  flex-direction: row;
+  height: 10%;
+  gap: 5%;
+  text-wrap: pretty;
+  & image, img {
+    overflow: hidden;
+    border-radius: 100%;
+    border: 1px solid;
+    width: var(--step-5);
+    align-self: center;
+    aspect-ratio: 1 / 1;
+  }
+  & div {
+    display: flex;
+    flex-direction: column;
+    align-self: center;
+  }
+}
+
+/* exceptions */
+[section="1"] {
+  --color-primary: white;
+  --color-secondary: var(--color-moderate-violet);
+}
