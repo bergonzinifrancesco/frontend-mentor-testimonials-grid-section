@@ -77,7 +77,8 @@ textarea:not([rows]) {
 /* global css */
 :root {
   --color-moderate-violet: hsl(263, 55%, 52%);
-  --color-very-dark-grayish-blue: hsl(219, 29%, 14%);
+  --color-very-dark-grayish-blue: hsl(217, 19%, 35%);
+  --color-very-dark-blackish-blue: hsl(219, 29%, 14%);
   --color-light-gray: hsl(0, 0%, 81%);
   --color-light-grayish-blue: hsl(210, 46%, 95%);
   --font-weight-medium: 500;
@@ -174,10 +175,20 @@ p, blockquote {
   color: var(--color-secondary);
 }
 .secondary-opacity-50 {
-  color: hsl(from var(--color-secondary) h s calc(l + 25));
+  color: var(--color-secondary);
+  opacity: 50%;
 }
 .secondary-opacity-70 {
-  color: hsl(from var(--color-secondary) h s calc(l + 20));
+  color: var(--color-secondary);
+  opacity: 70%;
+}
+.primary-opacity-50 {
+  color: var(--color-primary);
+  opacity: 50%;
+}
+.primary-opacity-70 {
+  color: var(--color-primary);
+  opacity: 70%;
 }
 .background-quotation {
   background-image: url("./images/bg-pattern-quotation.svg");
@@ -189,21 +200,21 @@ p, blockquote {
 .card {
   display: flex;
   flex-direction: column;
-  background-color: var(--color-moderate-violet);
+  background-color: var(--color-secondary);
   border-radius: 10px;
   padding: 20px;
+  width: 100%;
 }
 .banner {
   display: flex;
   flex-direction: row;
-  height: 10%;
-  gap: 5%;
   text-wrap: pretty;
+  gap: var(--step--1);
   & image, img {
     overflow: hidden;
     border-radius: 100%;
-    border: 1px solid;
-    width: var(--step-5);
+    border: 1.5px solid var(--color-tertiary);
+    height: calc(var(--step-1) * 2);
     align-self: center;
     aspect-ratio: 1 / 1;
   }
@@ -218,4 +229,20 @@ p, blockquote {
 [section="1"] {
   --color-primary: white;
   --color-secondary: var(--color-moderate-violet);
+  --color-tertiary: hsl(from var(--color-primary) h s l / 50%);
+}
+[section="2"] {
+  --color-primary: white;
+  --color-secondary: var(--color-very-dark-grayish-blue);
+  --color-tertiary: hsl(from var(--color-primary) h s l);
+}
+[section="3"] {
+  --color-primary: var(--color-very-dark-grayish-blue);
+  --color-secondary: white;
+  --color-tertiary: var(--color-secondary);
+}
+[section="4"] {
+  --color-primary: white;
+  --color-secondary: var(--color-very-dark-blackish-blue);
+  --color-tertiary: var(--color-moderate-violet);
 }
