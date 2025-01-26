@@ -242,31 +242,31 @@ p, blockquote {
 }
 
 /* exceptions */
-[section="1"] {
+[position="1"] {
   grid-area: s1;
   --color-primary: white;
   --color-secondary: var(--color-moderate-violet);
   --color-tertiary: hsl(from var(--color-primary) h s l / 50%);
 }
-[section="2"] {
+[position="2"] {
   grid-area: s2;
   --color-primary: white;
   --color-secondary: var(--color-very-dark-grayish-blue);
   --color-tertiary: hsl(from var(--color-primary) h s l);
 }
-[section="3"] {
+[position="3"] {
   grid-area: s3;
   --color-primary: var(--color-very-dark-grayish-blue);
   --color-secondary: white;
   --color-tertiary: var(--color-secondary);
 }
-[section="4"] {
+[position="4"] {
   grid-area: s4;
   --color-primary: white;
   --color-secondary: var(--color-very-dark-blackish-blue);
   --color-tertiary: var(--color-moderate-violet);
 }
-[section="5"] {
+[position="5"] {
   grid-area: s5;
   --color-primary: var(--color-very-dark-grayish-blue);
   --color-secondary: white;
